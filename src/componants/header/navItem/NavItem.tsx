@@ -1,7 +1,7 @@
-import React from "react";
+import { memo } from "react";
 
-function NavItem() {
-    return <div>NavItem</div>;
+function NavItem({ label }: { label: string }) {
+    return <li>{label}</li>;
 }
 
-export default NavItem;
+export default memo(NavItem);
