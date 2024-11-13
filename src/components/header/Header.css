@@ -1,0 +1,18 @@
+/* src/styles/Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #d2a378;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+}
