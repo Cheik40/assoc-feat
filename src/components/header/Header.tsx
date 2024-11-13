@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
+import NavList from "../navList/NavList";
 
 function Navbar() {
     const location = useLocation();
@@ -7,7 +8,7 @@ function Navbar() {
         <header className={styles.header}>
             <div className={styles.logo}>F.E.A.T</div>
             <nav className={styles.nav}>
-                <ul className={styles.ul}>
+                <NavList className={styles.ul}>
                     <li className={styles.li}>
                         <Link
                             className={`${styles.Link} ${
@@ -42,7 +43,7 @@ function Navbar() {
                             Actualité
                         </Link>
                     </li>
-                </ul>
+                </NavList>
             </nav>
         </header>
     );
