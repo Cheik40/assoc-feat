@@ -1,31 +1,18 @@
-import { Link, useLocation } from "react-router-dom";
+import { memo, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface BaliseLinkInterface {
-    path: string;
-    pathName?: string;
+    to: string;
     styles?: string;
-    active?: string;
-    label: string;
+    children: ReactNode;
 }
 
-function BaliseLink({
-    path,
-    pathName,
-    styles,
-    active,
-    label,
-}: BaliseLinkInterface) {
-    const location = useLocation();
+function BaliseLink({ to, styles, children }: BaliseLinkInterface) {
     return (
-        <Link
-            className={`${styles} ${
-                location.pathname === pathName ? active : ""
-            }`}
-            to={path}
-        >
-            {label}
+        <Link className={styles} to={to}>
+            {children}
         </Link>
     );
 }
 
-export default BaliseLink;
+export default memo(BaliseLink);

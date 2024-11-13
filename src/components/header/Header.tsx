@@ -1,6 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import NavList from "../navList/NavList";
+import NavItem from "../navItem/NavItem";
+import BaliseLink from "../ui/link/BaliseLink";
+
+interface NavLinkInterfance {
+    path: string;
+    label: string;
+}
+
+const navLinks: NavLinkInterfance[] = [
+    { path: "/", label: "Accueil" },
+    { path: "/information", label: "Information" },
+    { path: "/actualite", label: "Actualité" },
+];
 
 function Navbar() {
     const location = useLocation();
@@ -9,40 +22,19 @@ function Navbar() {
             <div className={styles.logo}>F.E.A.T</div>
             <nav className={styles.nav}>
                 <NavList className={styles.ul}>
-                    <li className={styles.li}>
-                        <Link
-                            className={`${styles.Link} ${
-                                location.pathname === "/" ? styles.active : ""
-                            }`}
-                            to='/'
-                        >
-                            Accueil
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            className={`${styles.Link} ${
-                                location.pathname === "/information"
-                                    ? styles.active
-                                    : ""
-                            }`}
-                            to='/information'
-                        >
-                            Information
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            className={`${styles.Link} ${
-                                location.pathname === "/actualite"
-                                    ? styles.active
-                                    : ""
-                            }`}
-                            to='/actualite'
-                        >
-                            Actualité
-                        </Link>
-                    </li>
+                    {navLinks.map(({ path, label }) => {
+                        const className = `${styles.Link} ${
+                            location.pathname === path ? styles.active : ""
+                        }`;
+
+                        return (
+                            <NavItem key={path} className={styles.li}>
+                                <BaliseLink styles={className} to={path}>
+                                    {label}
+                                </BaliseLink>
+                            </NavItem>
+                        );
+                    })}
                 </NavList>
             </nav>
         </header>

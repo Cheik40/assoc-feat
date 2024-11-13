@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 
 interface NavListInterface {
     children: ReactNode;
@@ -9,4 +9,4 @@ function NavList({ children, className }: NavListInterface) {
     return <ul className={className}>{children}</ul>;
 }
 
-export default NavList;
+export default memo(NavList);
